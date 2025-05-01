@@ -68,6 +68,14 @@ class BlurViewModel(private val bluromaticRepository: BluromaticRepository) : Vi
         bluromaticRepository.applyBlur(blurLevel)
     }
 
+    /*
+    Following the design principle of separation of concerns, the composable functions must not directly interact with the repository.
+    The composable functions interact with the ViewModel, and the ViewModel interacts with the repository.
+    */
+    fun cancelWork() {
+        bluromaticRepository.cancelWork()
+    }
+
     /**
      * Factory for [BlurViewModel] that takes [BluromaticRepository] as a dependency
      */
